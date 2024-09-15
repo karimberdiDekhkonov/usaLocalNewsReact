@@ -1,0 +1,17 @@
+.news-body {
+    padding: 20px;
+  }
+  
+  .news-item {
+    margin-bottom: 20px;
+  }
+  
+  .news-item h2 {
+    font-size: 20px;
+    margin-bottom: 10px;
+  }
+  
+  .news-item p {
+    font-size: 16px;
+  }
+  
