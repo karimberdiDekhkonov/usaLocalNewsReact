@@ -1,3 +1,4 @@
+/* Basic header styling */
 .header {
   display: flex;
   justify-content: space-between;
@@ -7,37 +8,43 @@
   color: #fff;
 }
 
+/* Logo styling */
 .logo {
   font-size: 24px;
   font-weight: bold;
 }
 
+/* Location container */
 .location {
   display: flex;
   align-items: center;
   position: relative;
 }
 
+/* Location icon styling */
 .location-icon {
   font-size: 24px;
-  margin-right: 10px;
+  margin-right: 10px; /* Space between icon and label */
 }
 
+/* Location label styling */
 .location-label {
-  margin-right: 10px;
+  margin-right: 10px; /* Space between label and input field */
 }
 
+/* Input container */
 .input-container {
-  position: relative;
   display: flex;
   align-items: center;
 }
 
+/* Input field styling */
 input {
   padding: 5px;
   margin-right: 10px;
 }
 
+/* Suggestions list styling */
 .suggestions-list {
   position: absolute;
   top: 100%;
@@ -54,21 +61,25 @@ input {
   margin: 0;
 }
 
+/* Suggestions list items */
 .suggestions-list li {
   padding: 10px;
   cursor: pointer;
 }
 
+/* Suggestions list item hover effect */
 .suggestions-list li:hover {
   background-color: #f0f0f0;
 }
 
+/* Not found message */
 .not-found {
   padding: 10px;
   text-align: center;
   color: #999;
 }
 
+/* Loading message */
 .loading {
   position: absolute;
   top: 100%;
@@ -79,4 +90,46 @@ input {
   padding: 10px;
   border: 1px solid #ddd;
   border-top: none;
+}
+
+/* Responsive styling for screens 600px wide and smaller */
+@media (max-width: 600px) {
+  .header {
+    flex-direction: column; /* Stack items vertically */
+    align-items: flex-start; /* Align items to the start */
+    padding: 10px; /* Reduce padding */
+  }
+
+  .logo {
+    font-size: 20px; /* Smaller font size for the logo */
+    margin-bottom: 10px; /* Add space below the logo */
+  }
+
+  .location {
+    flex-direction: row; /* Ensure items are in a row on mobile */
+    width: 100%; /* Full width for the location container */
+    margin-bottom: 10px; /* Add space below location */
+  }
+
+  .location-icon {
+    font-size: 24px; /* Maintain icon size */
+    margin-right: 10px; /* Ensure space between icon and input */
+  }
+
+  .location-label {
+    display: none; /* Hide the label on small screens */
+  }
+
+  .input-container {
+    width: 100%; /* Full width for the input container */
+  }
+
+  input {
+    width: calc(100% - 20px); /* Full width of input with padding */
+    margin-right: 0; /* Remove right margin */
+  }
+
+  .suggestions-list {
+    max-height: 150px; /* Reduce max height for suggestions on small screens */
+  }
 }

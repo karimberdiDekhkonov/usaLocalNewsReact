@@ -1,15 +1,13 @@
 import React, { useState } from 'react';
-import axios from 'axios'; // Make sure axios is installed
-import './Header.css'; // Ensure this CSS file exists for styling
-import { FaMapMarkerAlt } from 'react-icons/fa'; // Import location icon from react-icons
+import axios from 'axios';
+import './Header.css';
+import { FaMapMarkerAlt } from 'react-icons/fa';
 
-const Header = () => {
-  // State for user input, filtered cities, and loading status
+const Header = ({ onCitySelect }) => {
   const [input, setInput] = useState('');
   const [filteredCities, setFilteredCities] = useState([]);
   const [loading, setLoading] = useState(false);
 
-  // Capitalize the first letter of each word in a string
   const capitalizeWords = (str) => {
     return str
       .split(' ')
@@ -17,16 +15,14 @@ const Header = () => {
       .join(' ');
   };
 
-  // Replace spaces with %20 and capitalize each word
   const formatQuery = (str) => {
     return capitalizeWords(str.trim()).replace(/\s+/g, '%20');
   };
 
-  // Fetch cities from the backend
   const fetchCities = async (query) => {
-    const formattedQuery = formatQuery(query); // Format the query
+    const formattedQuery = formatQuery(query);
 
-    if (!formattedQuery) return; // No query, no fetch
+    if (!formattedQuery) return;
 
     setLoading(true);
 
@@ -41,12 +37,10 @@ const Header = () => {
     }
   };
 
-  // Handle input change
   const handleInputChange = (event) => {
     const value = event.target.value;
     setInput(value);
 
-    // Fetch cities if the input length is sufficient
     if (value.length > 2) {
       fetchCities(value);
     } else {
@@ -54,10 +48,10 @@ const Header = () => {
     }
   };
 
-  // Handle city selection
   const handleCitySelect = (city) => {
     setInput(city);
-    setFilteredCities([]); // Clear suggestions after selection
+    setFilteredCities([]);
+    onCitySelect(city); // Notify parent about city selection
   };
 
   return (

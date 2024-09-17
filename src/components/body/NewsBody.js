@@ -1,26 +1,27 @@
 import React from 'react';
-import './NewsBody.css'; // Ensure this CSS file exists
+import './NewsBody.css';
 
-const NewsBody = () => {
-  // Static news data
-  const news = [
-    { title: 'News Title 1', description: 'Description for news item 1.' },
-    { title: 'News Title 2', description: 'Description for news item 2.' },
-    { title: 'News Title 3', description: 'Description for news item 3.' },
-  ];
-
+const NewsBody = ({ news, loadMore, hasMore }) => {
   return (
     <div className="news-body">
       <h1>Top News</h1>
       {news.length > 0 ? (
-        news.map((item, index) => (
-          <div key={index} className="news-item">
-            <h2>{item.title}</h2>
-            <p>{item.description}</p>
-          </div>
-        ))
+        <>
+          {news.map((item, index) => (
+            <div key={index} className="news-item">
+              <h2>{item.title}</h2>
+              <p>{item.snippet}</p>
+              <a href={item.newsUrl} target="_blank" rel="noopener noreferrer">Read more</a>
+            </div>
+          ))}
+          {hasMore && (
+            <button className="load-more" onClick={loadMore}>
+              Load More
+            </button>
+          )}
+        </>
       ) : (
-        <p>No news available.</p>
+        <p>Set your location</p>
       )}
     </div>
   );
