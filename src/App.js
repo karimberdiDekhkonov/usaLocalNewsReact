@@ -12,7 +12,7 @@ const App = () => {
   const fetchNews = async (city, pageNum) => {
     try {
       const formattedCity = city.replace(/\s+/g, '%20'); // Replace spaces with %20
-      const response = await axios.get(`http://ec2-51-20-129-226.eu-north-1.compute.amazonaws.com:8080/api/usa/news?keyword=${formattedCity}&page=${pageNum}`);
+      const response = await axios.get(`https://xonqizirobot-production.up.railway.app/api/usa/news?keyword=${formattedCity}&page=${pageNum}`);
       
       if (response.data.length > 0) {
         setNews(prevNews => [...prevNews, ...response.data]);
