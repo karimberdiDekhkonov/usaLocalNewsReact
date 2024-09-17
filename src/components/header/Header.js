@@ -27,7 +27,7 @@ const Header = ({ onCitySelect }) => {
     setLoading(true);
 
     try {
-      const response = await axios.get(`http://localhost:8080/api/usa/cities/${formattedQuery}`);
+      const response = await axios.get(`http://ec2-51-20-129-226.eu-north-1.compute.amazonaws.com:8080/api/usa/cities/${formattedQuery}`);
       setFilteredCities(response.data);
     } catch (error) {
       console.error('Error fetching cities:', error);

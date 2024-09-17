@@ -11,6 +11,8 @@ const NewsBody = ({ news, loadMore, hasMore }) => {
             <div key={index} className="news-item">
               <h2>{item.title}</h2>
               <p>{item.snippet}</p>
+              <p><strong>Publisher:</strong> {item.publisher}</p>
+              <p><strong>Date:</strong> {item.dateTime}</p>
               <a href={item.newsUrl} target="_blank" rel="noopener noreferrer">Read more</a>
             </div>
           ))}
